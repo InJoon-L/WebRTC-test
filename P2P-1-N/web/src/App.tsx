@@ -27,7 +27,12 @@ const App = () => {
 	const getLocalStream = useCallback(async () => {
 		try {
 			const localStream = await navigator.mediaDevices.getUserMedia({
-				audio: true,
+				audio: {
+					echoCancellation: false,
+        			autoGainControl: false,
+        			noiseSuppression: false,
+        			latency: 0
+				},
 				video: {
 					width: 240,
 					height: 240,
